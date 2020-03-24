@@ -1,12 +1,7 @@
-# NLP-capstone-project-Butler-Did-It-?-aka-Agatha-Christie-Wrote-It-?
-
-
-# Butler Did it? Agatha Christie Wrote It? 
-# Ask my NLP Neural Network
+# Butler Did it? Agatha Christie Wrote It? Ask NLP Neural Network
 
 ## Summary:
 My project is dedicated to the classification problem: here I predict the author of a detective novel by the given paragraph. The following document will introduce the dataset and models I used, my challenges and key findings. This is a learning project, so it has not been designed for the direct practical application. However, the conclusions can be used for other classification problems as well.
-
 
 ## Description
 This is a study project dedicated to a classification problem: as a result of the modelling I predict the author of the detective novel by given paragraph. The following document will introduce the dataset and models used, challenges and key findings. 
@@ -16,13 +11,13 @@ Once this is a training project, it has not been designed for practical applicat
 Alternatively, if you have found a mysterious manuscript in the attic and were a bit curious as to whether you were about to publish an unknown novel by a famous writer, this project may have a practical application too. :)
 
 ## Table of Contents:
-Datasets
-Feature engineering
-Iteration 1. EDA
-Iteration 2. Modelling
-Iteration 2. EDA
-Iteration 2. Modelling
-Conclusions
+- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets] (Datasets)
+- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#feature-engineering] Feature engineering
+- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-eda] (Iteration 1. EDA)
+- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-modelling] (Iteration 1. Modelling)
+- Iteration 2. EDA
+- Iteration 2. Modelling
+- Conclusions
  
  
 ## Datasets
