@@ -56,19 +56,17 @@ Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may p
 
 In order to find an optimal model, I have tested several models with different numbers of classes (authors). 
 
-![The table comparing models and score with number of classes from 2 to 10]
-(https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Comparison%20across%20models_10%20authors.png)
+
+![The table comparing models and score with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Comparison%20across%20models_10%20authors.png)
 
  
 While all the models worked efficiently with the number of classes equal to 1 or two, with an increase in the number of classes I have observed a significant drop down in accuracy of the model. 
 
 At this point it became obvious that German words that had not been excluded from the text were power predictors (based on the feature importance reports for the Rain Forest Classifier and Support Vector Machine (ovr) model). Therefore, in the second iteration of modelling I have dropped the rows containing foreign words.
 
-![RainForest Classifier: feature importance]
-(https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/RFC_feature%20importance.png)
+![RainForest Classifier: feature importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/RFC_feature%20importance.png)
 
-![RSupport Vector Machine: feature importance]
-(https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/SVM_feature%20importance.png)
+![RSupport Vector Machine: feature importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/SVM_feature%20importance.png)
 
 I have made a conclusion that the optimal balance was between 6 classes and Support Vector Machine model (svm.SVC(kernel='linear', decision_function_shape='ovr', C=1). 
 This combination allowed to get the following scores:
