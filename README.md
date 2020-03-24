@@ -11,13 +11,16 @@ Once this is a training project, it has not been designed for practical applicat
 Alternatively, if you have found a mysterious manuscript in the attic and were a bit curious as to whether you were about to publish an unknown novel by a famous writer, this project may have a practical application too. :)
 
 ## Table of Contents:
-- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets] (Datasets)
-- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#feature-engineering] Feature engineering
-- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-eda] (Iteration 1. EDA)
-- [https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-modelling] (Iteration 1. Modelling)
-- Iteration 2. EDA
-- Iteration 2. Modelling
-- Conclusions
+
+[link to Google!](http://google.com)
+
+- [Datasets] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets)
+- [Feature engineering] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#feature-engineering)
+- [Iteration 1. EDA] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-eda)
+- [Iteration 1. Modelling] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-modelling)
+- [Iteration 2. EDA](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-2-eda)
+- [Iteration 2. Modelling](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-2-modelling)
+- [Conclusions](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#conclusions)
  
  
 ## Datasets
