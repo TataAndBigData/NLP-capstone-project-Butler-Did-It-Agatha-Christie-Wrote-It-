@@ -84,6 +84,8 @@ However, it has not proven itself:
 
 The confusion matrix shows that the majority of authors are more often confused with others rather than being identified correctly. 
 
+![MLP Classifier: confusion matrix](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/MLPM_confusion%20matrix.png)
+
 This type of error in multi-classification has been well described by Maya R. Gupta,Samy Bengio (Google Inc. ) in the study ‘Training Highly Multiclass Classifiers’: ‘In practice, the more classes considered, the greater the chance that some classes will be easy to separate, but that some classes will be highly confusable.’ 
 
 Despite the fact my dataset only has several dozen classes, not thousands of them, the issue is the same. So I will try to tackle this issue with a bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
