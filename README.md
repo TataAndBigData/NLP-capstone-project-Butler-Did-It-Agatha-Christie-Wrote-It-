@@ -12,12 +12,10 @@ Alternatively, if you have found a mysterious manuscript in the attic and were a
 
 ## Table of Contents:
 
-[link to Google!](http://google.com)
-
-- [Datasets] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets)
-- [Feature engineering] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#feature-engineering)
-- [Iteration 1. EDA] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-eda)
-- [Iteration 1. Modelling] (https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-modelling)
+- [Datasets](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets)
+- [Feature engineering](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#feature-engineering)
+- [Iteration 1. EDA](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-eda)
+- [Iteration 1. Modelling](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-1-modelling)
 - [Iteration 2. EDA](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-2-eda)
 - [Iteration 2. Modelling](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#iteration-2-modelling)
 - [Conclusions](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#conclusions)
