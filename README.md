@@ -10,6 +10,8 @@ Once this is a training project, it has not been designed for practical applicat
 
 Alternatively, if you have found a mysterious manuscript in the attic and were a bit curious as to whether you were about to publish an unknown novel by a famous writer, this project may have a practical application too. :)
 
+![](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/%D0%A5%D0%BE%D0%BB%D0%BC%D1%81_%D0%BE%D0%BD.jpg?raw=true)
+
 ## Table of Contents:
 
 - [Datasets](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/README.md#datasets)
