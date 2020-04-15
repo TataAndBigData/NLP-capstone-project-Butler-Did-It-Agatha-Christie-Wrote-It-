@@ -3,14 +3,12 @@
 ## Summary:
 My project is dedicated to the classification problem: here I predict the author of a detective novel by the given paragraph. The following document will introduce the dataset and models I used, my challenges and key findings. This is a learning project, so it has not been designed for the direct practical application. However, the conclusions can be used for other classification problems as well.
 
-## Description
-This is a study project dedicated to a classification problem: as a result of the modelling I predict the author of the detective novel by given paragraph. The following document will introduce the dataset and models used, challenges and key findings. 
+## Description and application
+This project focuses on multi-class classification based on the Natural Language Processing: as a result of the modelling I predict the author of the detective novel by given paragraph. Once this is a training project, the conclusions may not be for the directly practical use. Nethertheless, the insights like optimal number of classes or most powerful language-related features can be used for other classification problems as well. 
 
-Once this is a training project, it has not been designed for practical application. However,  the conclusions regarding optimal number of classes or most powerful language-related features can be used for other classification problems as well. 
+Alternatively, if the one had found a mysterious manuscript in the attic and would have been curious as to whether it was an unknown novel by a famous writer, this project may have had a practical application, indeed. :)
 
-Alternatively, if you have found a mysterious manuscript in the attic and were a bit curious as to whether you were about to publish an unknown novel by a famous writer, this project may have a practical application too. :)
-
-![](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/%D0%A5%D0%BE%D0%BB%D0%BC%D1%81_%D0%BE%D0%BD.jpg?raw=true)
+![](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/%D0%A5%D0%BE%D0%BB%D0%BC%D1%81_%D0%BE%D0%BD.jpg)
 
 ## Table of Contents:
 
@@ -27,23 +25,23 @@ Alternatively, if you have found a mysterious manuscript in the attic and were a
 
 For this project I created several datasets. The initial dataset has been collected with web scraping and initially contained a set of paragraphs from the popular detective novels and their authors. 
 
-This initial dataset contained 6800 datapoints, including 31934  predictors, such as:
+This initial dataset contained 40 classes and  3200 datapoints, including 1952  predictors, such as:
 - part of the speech tags,
 - sentiment assessment,
 - length of the paragraphs,
-- count of the stemmed words used by the author I have set n-grams length to (1,3) max_df to 3% of all corpus due to the heavy computations).
+- count of the stemmed words used by the author (I have set n-grams length to (1,3) min_df to 0.3% of all corpus due to the heavy computations).
 
-Then, after modelling described in the chapter “Iteration 1. Modelling”, I have made a decision to add more authors and paragraphs for each of them, exclude any paragraphs containing foreign words a' nd add another features, such as:
+Then, after modelling described in the chapter “Iteration 1. Modelling”, I have made a decision to add more authors and paragraphs for each of them, exclude any paragraphs containing foreign words and add another features, such as:
  - ratio of unique words given paragraph length,
 - the patterns of use parts of speech repetitively (e.g. 3 adjectives in a row).
 
-The updated dataset had finally had 45184 data points and 6271 predictors (I have set n-grams length to (1,3) and max_df to 0.3% of all corpus due to the heavy computations).
+The updated dataset had finally had 45184 data points and 6271 predictors (I still have set n-grams length to (1,3) and min_df to 0.3% of all corpus due to the heavy computations).
 
 The results of the further modelling are to be described in the chapter “Iteration 2. Modelling”.
 
 ## Feature engineering
 
-My initial hypothesis was that the collected features should represent the individual style of each author, as the dataset was designed to reflect diversity of authors from different epochs, countries and genders and also the books written in English originally or translated.
+The initial hypothesis was that the collected features should represent the individual style of each author, as the dataset was designed to reflect diversity of authors from different epochs, countries and genders and also the books written in English originally or translated.
 
 My guess was that these different authors had tendencies to use certain stylistic patterns, such as few or many adjectives and adverbs.
 Both iterations of feature engineering (chapters “Iteration 1. EDA” and “Iteration 2. EDA” respectively) were dedicated to finding predictors inside the given text: I was designing features based on the information hidden in the paragraph itself, no ‘external’ data (such as publishing house or year of writing) were included.
@@ -59,7 +57,7 @@ Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may p
 In order to find an optimal model, I have tested several models with different numbers of classes (authors). 
 
 
-![The table comparing models and score with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Comparison%20across%20models_10%20authors.png)
+![The table comparing models and score with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Comparison%20across%20models_10%20authors.png)
 
  
 While all the models worked efficiently with the number of classes equal to 1 or two, with an increase in the number of classes I have observed a significant drop down in accuracy of the model. 
