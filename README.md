@@ -23,9 +23,7 @@ Alternatively, if the one had found a mysterious manuscript in the attic and wou
  
 ## Datasets
 
-For this project I created several datasets. The initial dataset has been collected with web scraping and initially contained a set of paragraphs from the popular detective novels and their authors. 
-
-This initial dataset contained 40 classes and  3200 datapoints, including 1952  predictors, such as:
+For this project I created several datasets. The [initial dataset](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Iteration%201/df_40_authors_all_features_03percent.csv.zip) has been collected with web scraping and contains a set of paragraphs from the popular detective novels by 40 authors. These 3200 datapoints include 1952  predictors, such as:
 - part of the speech tags,
 - sentiment assessment,
 - length of the paragraphs,
@@ -56,13 +54,11 @@ Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may p
 
 In order to find an optimal model, I have tested several models with different numbers of classes (authors). 
 
-
 ![The table comparing models and score with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Comparison%20across%20models_10%20authors.png)
 
  
 While all the models worked efficiently with the number of classes equal to 1 or two, with an increase in the number of classes I have observed a significant drop down in accuracy of the model. 
 
-At this point it became obvious that German words that had not been excluded from the text were power predictors (based on the feature importance reports for the Rain Forest Classifier and Support Vector Machine (ovr) model). Therefore, in the second iteration of modelling I have dropped the rows containing foreign words.
 
 ![RainForest Classifier: feature importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/RFC_feature%20importance.png)
 
@@ -78,6 +74,7 @@ However, on the full dataset (34 classes) the results were sizeable worse:
 - Accuracy score (test set) = 0.473
 
 My next hypothesis was that the score could be improved if I were to build a Neural Network, so that not only the power of predictors could contribute to the accuracy level, but also the known mistakes. So I have tested it on 7 classes with MLPClassifier(hidden_layer_sizes=(100,100,100,100,100,100), max_iter=1000,warm_start=True, random_state=42, activation='logistic')
+
 However, it has not proven itself:
 - Accuracy score (train set) = 1.0 (sic!)
 - Accuracy score (test set) = 0.322
@@ -88,7 +85,7 @@ The confusion matrix shows that the majority of authors are more often confused 
 
 This type of error in multi-classification has been well described by Maya R. Gupta,Samy Bengio (Google Inc. ) in the study ‘Training Highly Multiclass Classifiers’: ‘In practice, the more classes considered, the greater the chance that some classes will be easy to separate, but that some classes will be highly confusable.’ 
 
-Despite the fact my dataset only has several dozen classes, not thousands of them, the issue is the same. So I will try to tackle this issue with a bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
+Despite the fact my dataset only has 40 classes, unlike thousands of them described by Google researchers, the issue has been the same. So I in the next iteration my aim is to tackle this issue with a bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
 
 ## Iteration 2. EDA
 
