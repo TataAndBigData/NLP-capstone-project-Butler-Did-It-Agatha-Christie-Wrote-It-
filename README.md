@@ -29,63 +29,61 @@ For this project I created several datasets. The [initial dataset](https://githu
 - length of the paragraphs,
 - count of the stemmed words used by the author (I have set n-grams length to (1,3) min_df to 0.3% of all corpus due to the heavy computations).
 
-Then, after modelling described in the chapter “Iteration 1. Modelling”, I have made a decision to add more authors and paragraphs for each of them, exclude any paragraphs containing foreign words and add another features, such as:
- - ratio of unique words given paragraph length,
+Based of the results of the modelling described in the chapter “Iteration 1. Modelling”, I have made a decision to add more authors and paragraphs, exclude any paragraphs containing foreign words and include several new features, such as:
+- ratio of unique words given paragraph length,
 - the patterns of use parts of speech repetitively (e.g. 3 adjectives in a row).
 
-The updated dataset had finally had 45184 data points and 6271 predictors (I still have set n-grams length to (1,3) and min_df to 0.3% of all corpus due to the heavy computations).
+The updated dataset had finally had 45184 data points and 6271 predictors I still had to set n-grams length to (1,3) and min_df to 0.3% of all corpus due to the heavy computations.
 
-The results of the further modelling are to be described in the chapter “Iteration 2. Modelling”.
 
 ## Feature engineering
 
-The initial hypothesis was that the collected features should represent the individual style of each author, as the dataset was designed to reflect diversity of authors from different epochs, countries and genders and also the books written in English originally or translated.
+Since my plan was to only use the features extracted from the text itself, I came up with the following list od features:
+- Length of the paragraph
+- Sentiment analysis metrics: number of positive, neutral and negative words, along with objectivity and positive_vs_negiveat score
+- Parts of the speech and punctuation marks counts
+- Most common tokens (top 0.3% of the corpus)
 
-My guess was that these different authors had tendencies to use certain stylistic patterns, such as few or many adjectives and adverbs.
-Both iterations of feature engineering (chapters “Iteration 1. EDA” and “Iteration 2. EDA” respectively) were dedicated to finding predictors inside the given text: I was designing features based on the information hidden in the paragraph itself, no ‘external’ data (such as publishing house or year of writing) were included.
-
-Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may point to the year when the story took place) and any personal or geographical names.
+In order to keep the dataset balanced I only chose paragraphs between 300 and 600 symbols length, which tuirned out to be a mistake. Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may point to the year when the story took place) and any personal or geographical names.
 
 ## Iteration 1. EDA
 
-*To be described*
+My hypothesis was that the collected features should represent the individual style of each author, as the dataset was designed to reflect diversity of authors from different epochs, countries and genders and also the books written in English originally or translated.
+
+Exploration of the data supported my theory, for example, different authors were proven to use more or less 'gruesome' vocabulary:
+
+![Average positive versus negative score for each author](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/40_authors_pos_vs_neg_score.png)
+
+At the same time, simple count of the most frequent words (Count Vectorization) showed that different authors had different most popular words, some of them also used different punctuation marks and parts of the speech more frequently than others.
+
+![Top 50 words frequency across 40 authors](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/40_authors_top_50_words.png)
+
  
 ## Iteration 1. Modelling
 
 In order to find an optimal model, I have tested several models with different numbers of classes (authors). 
 
-![The table comparing models and score with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Comparison%20across%20models_10%20authors.png)
+![The table comparing train score of different models with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Accuracy%20on%20the%20train%20set%20(40%20authors).png)
 
+![The table comparing test score of different models with number of classes from 2 to 10](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Accuracy%20on%20the%20test%20set%20(40%20authors).png)
  
-While all the models worked efficiently with the number of classes equal to 1 or two, with an increase in the number of classes I have observed a significant drop down in accuracy of the model. 
+Unfortunately, all the models showed low accuracy even with the number of classes equal to 2. Needless to say, with the increase of the number of classes I  observed a significant drop down in accuracy of the predictions. However, some of them worked better tha others.
 
+![Dynamic of the accuracy worsening for different models](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Drop%20in%20score%20of%20the%20diffrent%20models.png)
 
-![RainForest Classifier: feature importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/RFC_feature%20importance.png)
+The relatively better results were achieved by Neural Networks: Perceptron and Multi-Layer Perceptron, which is probably explained by the ability of Neural Networks to take the previous error into consideration (which also may explain the score for Gradient Boosting, as the priority in sub-setting the data is given to hard-to-fit data).
 
-![RSupport Vector Machine: feature importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/SVM_feature%20importance.png)
+The final run of the same models on the full dataset showed the further worsening of the score. Looking on the precision and recall values it became obvious that the classes were easily mixed up.  However, 
 
-I have made a conclusion that the optimal balance was between 6 classes and Support Vector Machine model (svm.SVC(kernel='linear', decision_function_shape='ovr', C=1). 
-This combination allowed to get the following scores:
-- Accuracy score (train set) =0.998
-- Accuracy score (test set) = 0.998
-
-However, on the full dataset (34 classes) the results were sizeable worse:
-- Accuracy score (train set) = 0.254
-- Accuracy score (test set) = 0.473
-
-My next hypothesis was that the score could be improved if I were to build a Neural Network, so that not only the power of predictors could contribute to the accuracy level, but also the known mistakes. So I have tested it on 7 classes with MLPClassifier(hidden_layer_sizes=(100,100,100,100,100,100), max_iter=1000,warm_start=True, random_state=42, activation='logistic')
-
-However, it has not proven itself:
-- Accuracy score (train set) = 1.0 (sic!)
-- Accuracy score (test set) = 0.322
+![Comparison of the models' score for 40 authors classsification](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Scores%20on%20the%20full%20dataset.png)
 
 The confusion matrix shows that the majority of authors are more often confused with others rather than being identified correctly. 
 
-![MLP Classifier: confusion matrix](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/MLPM_confusion%20matrix.png)
+![MLP Classifier: confusion matrix]()
 
 This type of error in multi-classification has been well described by Maya R. Gupta,Samy Bengio (Google Inc. ) in the study ‘Training Highly Multiclass Classifiers’: ‘In practice, the more classes considered, the greater the chance that some classes will be easy to separate, but that some classes will be highly confusable.’ 
 
-Despite the fact my dataset only has 40 classes, unlike thousands of them described by Google researchers, the issue has been the same. So I in the next iteration my aim is to tackle this issue with a bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
+Despite the fact my dataset only has 40 classes, unlike thousands of them described by Google researchers, the issue has been the same. So I in the next iteration my aim is to tackle this issue with a better Neural Network, bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
 
 ## Iteration 2. EDA
 
