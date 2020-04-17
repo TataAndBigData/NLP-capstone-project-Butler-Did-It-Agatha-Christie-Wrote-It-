@@ -1,6 +1,6 @@
 # Butler Did it? Agatha Christie Wrote It? Ask NLP Neural Network
 
-## Summary:
+## Summary
 My project is dedicated to the classification problem: here I predict the author of a detective novel by the given paragraph. The following document will introduce the dataset and models I used, challenges and key findings. This is a learning project, so it has not been designed for the direct practical application. However, the conclusions may be used for other classification cases as well.
 
 ## Description and application
