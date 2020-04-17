@@ -1,12 +1,12 @@
 # Butler Did it? Agatha Christie Wrote It? Ask NLP Neural Network
 
 ## Summary:
-My project is dedicated to the classification problem: here I predict the author of a detective novel by the given paragraph. The following document will introduce the dataset and models I used, my challenges and key findings. This is a learning project, so it has not been designed for the direct practical application. However, the conclusions can be used for other classification problems as well.
+My project is dedicated to the classification problem: here I predict the author of a detective novel by the given paragraph. The following document will introduce the dataset and models I used, challenges and key findings. This is a learning project, so it has not been designed for the direct practical application. However, the conclusions may be used for other classification cases as well.
 
 ## Description and application
-This project focuses on multi-class classification based on the Natural Language Processing: as a result of the modelling I predict the author of the detective novel by given paragraph. Once this is a training project, the conclusions may not be for the directly practical use. Nethertheless, the insights like optimal number of classes or most powerful language-related features can be used for other classification problems as well. 
+This project focuses on multi-class classification based on the Natural Language Processing: as a result of the modelling I predict the author of the detective novel by a paragraph. Once this is a training project, the aim is to practice NLP skills and compare different models, nethertheless, the conclusions like optimal number of classes or most powerful language-related features can be used for other classification problems as well. 
 
-Alternatively, if the one had found a mysterious manuscript in the attic and would have been curious as to whether it was an unknown novel by a famous writer, this project may have had a practical application, indeed. :)
+Alternatively, if the one had found a mysterious manuscript in the attic and would have been curious as to whether it had been an unknown novel by a famous writer, this project could have given a bit of practical advice too. :)
 
 ![](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/%D0%A5%D0%BE%D0%BB%D0%BC%D1%81_%D0%BE%D0%BD.jpg)
 
@@ -27,7 +27,7 @@ For this project I created several datasets. The [initial dataset](https://githu
 - part of the speech tags,
 - sentiment assessment,
 - length of the paragraphs,
-- count of the stemmed words used by the author (I have set n-grams length to (1,3) min_df to 0.3% of all corpus due to the heavy computations).
+- count of the stemmed words used by each author.
 
 Based of the results of the modelling described in the chapter “Iteration 1. Modelling”, I have made a decision to add more authors and paragraphs, exclude any paragraphs containing foreign words and include several new features, such as:
 - ratio of unique words given paragraph length,
@@ -42,7 +42,7 @@ Since my plan was to only use the features extracted from the text itself, I cam
 - Length of the paragraph
 - Sentiment analysis metrics: number of positive, neutral and negative words, along with objectivity and positive_vs_negiveat score
 - Parts of the speech and punctuation marks counts
-- Most common tokens (top 0.3% of the corpus)
+- Most common tokens (top 0.3% of the corpus, n-grams length equal to (1,3) min_df)
 
 In order to keep the dataset balanced I only chose paragraphs between 300 and 600 symbols length, which tuirned out to be a mistake. Also, for the purpose of ‘pure’ analysis, I have excluded digits (that may point to the year when the story took place) and any personal or geographical names.
 
@@ -71,19 +71,39 @@ Unfortunately, all the models showed low accuracy even with the number of classe
 
 ![Dynamic of the accuracy worsening for different models](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Drop%20in%20score%20of%20the%20diffrent%20models.png)
 
-The relatively better results were achieved by Neural Networks: Perceptron and Multi-Layer Perceptron, which is probably explained by the ability of Neural Networks to take the previous error into consideration (which also may explain the score for Gradient Boosting, as the priority in sub-setting the data is given to hard-to-fit data).
+The relatively better results were achieved by Neural Networks: Perceptron and Multi-Layer Perceptron, which is can be explained by the ability of Neural Networks to take the previous error into consideration (this may also explain the score for Gradient Boosting, as the priority in sub-setting the data is given to hard-to-fit data).
 
-The final run of the same models on the full dataset showed the further worsening of the score. Looking on the precision and recall values it became obvious that the classes were easily mixed up.  However, 
+The final run of the same models on the full dataset showed the further worsening of the score. The precision and recall scores highlight that the classes were easily mixed up.  
 
 ![Comparison of the models' score for 40 authors classsification](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/Scores%20on%20the%20full%20dataset.png)
 
-The confusion matrix shows that the majority of authors are more often confused with others rather than being identified correctly. 
+The confusion matrices show that the majority of authors is more often confused with others rather than being identified correctly. 
 
-![MLP Classifier: confusion matrix]()
+![Fragment of Logistic Regression confusion matrix](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/LR_confusion_matrix.png)
+
+So, according to Logistic Regression model, Agatha Christie or Arthur Conan Doyle can equally often be labelled as Arthur B. Reeve.
+
+![Fragment of Random Forest Classifier confusion matrix](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/RFC_confusion%20matrix.png)
+
+Random Forest Classifier labels Anna Catherine Green as Anthony Berkeley.
+
+![Fragment of Multi-Layer Perceptron confusion matrix](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/MLP_confusion%20matrix.png)
+
+The same issue occurs in every model. 
 
 This type of error in multi-classification has been well described by Maya R. Gupta,Samy Bengio (Google Inc. ) in the study ‘Training Highly Multiclass Classifiers’: ‘In practice, the more classes considered, the greater the chance that some classes will be easy to separate, but that some classes will be highly confusable.’ 
 
 Despite the fact my dataset only has 40 classes, unlike thousands of them described by Google researchers, the issue has been the same. So I in the next iteration my aim is to tackle this issue with a better Neural Network, bigger dataset and new added features. The results are to be described in the chapter ‘Iteration 2. Modelling’.
+
+In order to find more powerful combination of features, I have compared top 20 predictors for Logistic Regression, Random Forest Classifier and Gradient Boosting Classifier.
+
+![Logistic Regression feature_importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/LR_feature_importance_40%20authors.png)
+
+![Random Forest Classifier feature_importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/RFC_feature_importance_40%20authors.png)
+
+![Gradient Boosting Classifier feature_importance](https://github.com/TataAndBigData/NLP-capstone-project-Butler-Did-It-Agatha-Christie-Wrote-It-/blob/master/Illustrations/GB_feature_importance_40%20authors.png)
+
+Apparently, the predictors associated with the frequency of the certain parts of speech or paragraph length have higher weights than the popular tokens. Therefore, in the second iteration of modelling I will not artificially balance length of the paragraphs and will add several features showing the use of parts of speech by different authors.
 
 ## Iteration 2. EDA
 
